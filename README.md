@@ -71,4 +71,4 @@ Common Lisp は lisp-lang.org 配布の SVG を使用しています。
 `license` 列は言語やコンパイラではなくロゴ素材のライセンスです。
 SQL・Scheme・Brainfuck のロゴ欄は空です。
 
-このフォルダは独立した Git リポジトリです。リモートは設定していません。
+このフォルダは独立した Git リポジトリです。
