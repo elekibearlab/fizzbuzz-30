@@ -9,10 +9,10 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent.parent
 cache = root / '.downloads' / 'metadata'
 cache.mkdir(parents=True, exist_ok=True)
-logos = root / 'logos'
+logos = root / 'data' / 'logos'
 logos.mkdir(exist_ok=True)
 
 def fetch(url):
@@ -97,7 +97,7 @@ def collect(row):
             logo_source = base + f'icons/{icon_name}/{icon_name}-{variant}.svg'
             content = fetch(logo_source)
             assert ET.fromstring(content).tag.endswith('svg')
-            logo_file = f'logos/{slug}.svg'
+            logo_file = f'data/logos/{slug}.svg'
             (root / logo_file).write_bytes(content)
             license_name = 'MIT'
     if slug == 'commonlisp' and not logo_file:
@@ -107,7 +107,7 @@ def collect(row):
         )
         content = fetch(logo_source)
         assert ET.fromstring(content).tag.endswith('svg')
-        logo_file = 'logos/commonlisp.svg'
+        logo_file = 'data/logos/commonlisp.svg'
         (root / logo_file).write_bytes(content)
         license_name = 'Not specified by source'
     print(slug + ': ' + evidence, flush=True)
@@ -117,7 +117,7 @@ def collect(row):
 with ThreadPoolExecutor(max_workers=6) as pool:
     collected = list(pool.map(collect, data))
 
-with (root / 'languages.csv').open('w', newline='', encoding='utf-8') as f:
+with (root / 'data' / 'languages.csv').open('w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f, lineterminator='\n')
     writer.writerow(('slug', 'name', 'year', 'designer', 'logo_file',
                      'logo_source_url', 'license'))
@@ -150,6 +150,6 @@ sources += [
     '- Scheme: no Devicon entry or SVG logo on [scheme.org](https://www.scheme.org/).',
     '- Brainfuck: no Devicon entry or SVG logo on [brainfuck.org](https://www.brainfuck.org/).',
 ]
-(root / 'metadata_sources.md').write_text(
+(root / 'docs' / 'metadata_sources.md').write_text(
     '\n'.join(sources) + '\n', encoding='utf-8', newline='\n'
 )

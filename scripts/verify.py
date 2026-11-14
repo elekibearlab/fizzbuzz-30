@@ -9,7 +9,7 @@ import shutil
 import subprocess
 import sys
 
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent.parent
 os.chdir(root)
 build = root / '.build'
 build.mkdir(exist_ok=True)
@@ -168,11 +168,11 @@ for slug, command in versions.items():
 
 results = []
 stats = []
-expected = (root / 'expected.txt').read_bytes()
+expected = (root / 'data' / 'expected.txt').read_bytes()
 assert len(expected.splitlines()) == 100
 for slug, ext in extensions.items():
     for version in ('aligned', 'idiomatic'):
-        source = root / slug / f'{version}.{ext}'
+        source = root / 'languages' / slug / f'{version}.{ext}'
         text = source.read_text(encoding='utf-8')
         lines = sum(bool(s.strip()) for s in text.splitlines())
         stats.append((slug, version, lines,
@@ -203,7 +203,7 @@ for slug, ext in extensions.items():
             actual = target / 'actual.txt'
             actual.write_bytes(output)
             difference = subprocess.run(
-                ['diff', '-u', str(root / 'expected.txt'), str(actual)],
+                ['diff', '-u', str(root / 'data' / 'expected.txt'), str(actual)],
                 capture_output=True
             )
             (target / 'diff.txt').write_bytes(difference.stdout)
@@ -215,7 +215,7 @@ for slug, ext in extensions.items():
         results.append((slug, version, status, detail))
         print(f'{slug}/{version}: {status} {detail}', flush=True)
 
-with (root / 'stats.csv').open('w', newline='', encoding='utf-8') as f:
+with (root / 'data' / 'stats.csv').open('w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f, lineterminator='\n')
     writer.writerow(('slug', 'version', 'lines', 'chars'))
     writer.writerows(stats)
@@ -247,7 +247,7 @@ report += [
     'stats.csv counts nonempty lines and Unicode characters other',
     'than whitespace. Source files contain no comments.', '',
 ]
-(root / 'results.md').write_text(
+(root / 'docs' / 'results.md').write_text(
     '\n'.join(report), encoding='utf-8', newline='\n'
 )
 sys.exit(0 if ok == 60 else 1)

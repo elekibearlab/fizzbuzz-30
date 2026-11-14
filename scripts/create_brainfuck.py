@@ -1,7 +1,7 @@
 from pathlib import Path
 import textwrap
 
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent.parent
 code = []
 pointer = 0
 next_cell = 12
@@ -124,7 +124,7 @@ add(0, -1)
 emit(']')
 
 source = '\n'.join(textwrap.wrap(''.join(code), 60)) + '\n'
-folder = root / 'brainfuck'
+folder = root / 'languages' / 'brainfuck'
 folder.mkdir(exist_ok=True)
 for version in ('aligned', 'idiomatic'):
     (folder / f'{version}.bf').write_text(

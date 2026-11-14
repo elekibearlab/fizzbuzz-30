@@ -5,9 +5,10 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
+HERE = Path(__file__).resolve().parent
 OUT = ROOT / "compare.html"
-TEMPLATE = ROOT / "compare.template.html"
+TEMPLATE = HERE / "compare.template.html"
 VERSIONS = ("aligned", "idiomatic")
 
 # highlight.js language name per slug (None = plain text)
@@ -23,12 +24,12 @@ HLJS = {
 
 
 def read_csv(name):
-    with open(ROOT / name, encoding="utf-8", newline="") as f:
+    with open(ROOT / "data" / name, encoding="utf-8", newline="") as f:
         return list(csv.DictReader(f))
 
 
 def find_source(slug, version):
-    matches = sorted((ROOT / slug).glob(version + ".*"))
+    matches = sorted((ROOT / "languages" / slug).glob(version + ".*"))
     if len(matches) != 1:
         raise SystemExit(f"{slug}/{version}: expected 1 file, found {len(matches)}")
     return matches[0]

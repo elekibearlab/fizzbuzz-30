@@ -1,0 +1,31 @@
+slug,name,year,designer,logo_file,logo_source_url,license
+c,C,1972,Dennis Ritchie,data/logos/c.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/c/c-original.svg,MIT
+cpp,C++,1985,Bjarne Stroustrup,data/logos/cpp.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/cplusplus/cplusplus-original.svg,MIT
+csharp,C#,2000,Anders Hejlsberg,data/logos/csharp.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/csharp/csharp-original.svg,MIT
+java,Java,1995,James Gosling,data/logos/java.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/java/java-original.svg,MIT
+python,Python,1991,Guido van Rossum,data/logos/python.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/python/python-original.svg,MIT
+javascript,JavaScript,1995,Brendan Eich,data/logos/javascript.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/javascript/javascript-original.svg,MIT
+go,Go,2009,Robert Griesemer; Rob Pike; Ken Thompson,data/logos/go.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/go/go-original.svg,MIT
+rust,Rust,2012,Graydon Hoare,data/logos/rust.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/rust/rust-original.svg,MIT
+php,PHP,1995,Rasmus Lerdorf,data/logos/php.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/php/php-original.svg,MIT
+ruby,Ruby,1995,Yukihiro Matsumoto,data/logos/ruby.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/ruby/ruby-original.svg,MIT
+kotlin,Kotlin,2011,Andrey Breslav; JetBrains,data/logos/kotlin.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/kotlin/kotlin-original.svg,MIT
+swift,Swift,2014,Chris Lattner; Doug Gregor; John McCall; Ted Kremenek; Joe Groff; Apple,data/logos/swift.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/swift/swift-original.svg,MIT
+scala,Scala,2004,Martin Odersky,data/logos/scala.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/scala/scala-original.svg,MIT
+lua,Lua,1993,Roberto Ierusalimschy; Waldemar Celes; Luiz Henrique de Figueiredo,data/logos/lua.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/lua/lua-original.svg,MIT
+bash,Bash,1989,Brian Fox,data/logos/bash.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/bash/bash-original.svg,MIT
+powershell,PowerShell,2006,Jeffrey Snover; Bruce Payette; James Truher,data/logos/powershell.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/powershell/powershell-original.svg,MIT
+r,R,1993,Ross Ihaka; Robert Gentleman,data/logos/r.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/r/r-original.svg,MIT
+julia,Julia,2012,Jeff Bezanson; Stefan Karpinski; Viral B. Shah; Alan Edelman,data/logos/julia.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/julia/julia-original.svg,MIT
+fortran,Fortran,1957,John Backus,data/logos/fortran.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/fortran/fortran-original.svg,MIT
+gdscript,GDScript,2014,Juan Linietsky; Ariel Manzur,data/logos/gdscript.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/godot/godot-original.svg,MIT
+cobol,COBOL,1960,Howard Bromberg; Norman Discount; Vernon Reeves; Jean E. Sammet; William Selden; Gertrude Tierney (CODASYL),data/logos/cobol.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/cobol/cobol-original.svg,MIT
+sql,SQL,1973,Donald D. Chamberlin; Raymond F. Boyce,,,
+asm,Assembly (x86-64 Linux; NASM),1947,Kathleen Booth,data/logos/asm.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/nasm/nasm-original.svg,MIT
+commonlisp,Common Lisp,1984,Scott Fahlman; Richard P. Gabriel; David A. Moon; Kent Pitman; Guy L. Steele Jr.; Daniel Weinreb,data/logos/commonlisp.svg,https://lisp-lang.org/assets/img/favicon/generated/safari-pinned-tab.svg,Not specified by source
+scheme,Scheme,1975,Guy L. Steele Jr.; Gerald Jay Sussman,,,
+haskell,Haskell,1990,Simon Peyton Jones; Paul Hudak; Philip Wadler; et al.,data/logos/haskell.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/haskell/haskell-original.svg,MIT
+elixir,Elixir,2012,José Valim,data/logos/elixir.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/elixir/elixir-original.svg,MIT
+erlang,Erlang,1986,Joe Armstrong; Robert Virding; Mike Williams,data/logos/erlang.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/erlang/erlang-original.svg,MIT
+prolog,Prolog,1972,Alain Colmerauer; Robert Kowalski,data/logos/prolog.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/prolog/prolog-original.svg,MIT
+brainfuck,Brainfuck,1993,Urban Müller,,,

@@ -5,7 +5,7 @@ import sys
 import urllib.request
 import zipfile
 
-root = Path(__file__).resolve().parent
+root = Path(__file__).resolve().parent.parent
 downloads = root / '.downloads'
 runtimes = root / '.runtimes'
 downloads.mkdir(exist_ok=True)

@@ -3,8 +3,8 @@ import csv
 import re
 import xml.etree.ElementTree as ET
 
-root = Path(__file__).resolve().parent
-with (root / 'languages.csv').open(encoding='utf-8') as f:
+root = Path(__file__).resolve().parent.parent
+with (root / 'data' / 'languages.csv').open(encoding='utf-8') as f:
     languages = list(csv.DictReader(f))
 assert len(languages) == 30
 assert len({row['slug'] for row in languages}) == 30
@@ -12,7 +12,7 @@ sources = []
 for row in languages:
     slug = row['slug']
     for version in ('aligned', 'idiomatic'):
-        matches = list((root / slug).glob(version + '.*'))
+        matches = list((root / 'languages' / slug).glob(version + '.*'))
         assert len(matches) == 1, (slug, version)
         source = matches[0]
         sources.append(source)
@@ -36,7 +36,7 @@ for row in languages:
         assert row['logo_source_url'].startswith('https://')
         assert row['license']
 
-with (root / 'stats.csv').open(encoding='utf-8') as f:
+with (root / 'data' / 'stats.csv').open(encoding='utf-8') as f:
     stats = list(csv.DictReader(f))
 assert len(stats) == 60
 for source in sources:

@@ -1,5 +1,5 @@
 set -eu
-cd "$(dirname "$0")"
+cd "$(dirname "$0")/.."
 ROOT="$PWD"
 export PATH="$ROOT/.runtimes/godot:$ROOT/.runtimes/swift/usr/bin:$ROOT/.runtimes/julia/bin:$ROOT/.runtimes/powershell:$PATH"
 mkdir -p "$ROOT/.build/tmp"
@@ -12,5 +12,5 @@ export XDG_CONFIG_HOME="$ROOT/.build/config"
 export XDG_DATA_HOME="$ROOT/.build/data"
 export GUILE_AUTO_COMPILE=0
 export LC_ALL=C.UTF-8
-python3 -B verify.py
-exec python3 -B audit.py
+python3 -B scripts/verify.py
+exec python3 -B scripts/audit.py
