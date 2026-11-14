@@ -1,0 +1,5 @@
+.build/
+.runtimes/
+.downloads/
+__pycache__/
+*.log
