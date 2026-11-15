@@ -38,9 +38,9 @@ data = [
     ('ruby', 'Ruby', 1995, 'Yukihiro Matsumoto', 'Ruby_(programming_language)'),
     ('kotlin', 'Kotlin', 2011, 'Andrey Breslav; JetBrains', 'Kotlin_(programming_language)'),
     ('swift', 'Swift', 2014, 'Chris Lattner; Doug Gregor; John McCall; Ted Kremenek; Joe Groff; Apple', 'Swift_(programming_language)'),
-    ('scala', 'Scala', 2004, 'Martin Odersky', 'Scala_(programming_language)'),
     ('lua', 'Lua', 1993, 'Roberto Ierusalimschy; Waldemar Celes; Luiz Henrique de Figueiredo', 'Lua_(programming_language)'),
     ('bash', 'Bash', 1989, 'Brian Fox', 'Bash_(Unix_shell)'),
+    ('batch', 'Batch', 1981, 'Microsoft', 'Batch_file'),
     ('powershell', 'PowerShell', 2006, 'Jeffrey Snover; Bruce Payette; James Truher', 'PowerShell'),
     ('r', 'R', 1993, 'Ross Ihaka; Robert Gentleman', 'R_(programming_language)'),
     ('julia', 'Julia', 2012, 'Jeff Bezanson; Stefan Karpinski; Viral B. Shah; Alan Edelman', 'Julia_(programming_language)'),
@@ -100,6 +100,12 @@ def collect(row):
             logo_file = f'data/logos/{slug}.svg'
             (root / logo_file).write_bytes(content)
             license_name = 'MIT'
+    if slug == 'batch':
+        logo_file = 'data/logos/batch.svg'
+        (root / logo_file).write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">\n  <rect x="4" y="14" width="120" height="100" rx="12" fill="#181b20"/>\n  <text x="14" y="73" fill="#fff" font-family="monospace" font-size="27">C:\\&gt;_</text>\n</svg>\n', encoding='utf-8', newline='\n')
+        logo_source = 'self-made, CC0'
+        license_name = 'CC0'
+        evidence = 'MS-DOS 1.0 lineage (1981); modern Windows cmd examples.'
     if slug == 'commonlisp' and not logo_file:
         logo_source = (
             'https://lisp-lang.org/assets/img/favicon/'
@@ -139,6 +145,7 @@ sources = [
     'rather than its 1959 design year. SQL likewise uses that',
     'infobox value (1973). Common Lisp uses the SVG favicon served',
     'by lisp-lang.org; that source does not specify an asset license.', '',
+    'Batch uses 1981 for MS-DOS 1.0 / PC DOS 1.0, whose COMMAND.COM supported batch files. This is a lineage date, not modern cmd syntax. See [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS), [Batch file](https://en.wikipedia.org/wiki/Batch_file), and [PC DOS 1.0 evidence](https://www.os2museum.com/wp/pc-dos-1-0-but-not-quite/). The logo is self-made, CC0, and depicts a generic terminal with no third-party trademark.', '',
     '| slug | source | retrieved infobox |',
     '| --- | --- | --- |',
 ]

@@ -30,9 +30,9 @@ by lisp-lang.org; that source does not specify an asset license.
 | ruby | [English Wikipedia](https://en.wikipedia.org/wiki/Ruby_%28programming_language%29) | Designed by Yukihiro Matsumoto; First appeared 1995 ; 31 years ago ( 1995 ) |
 | kotlin | [English Wikipedia](https://en.wikipedia.org/wiki/Kotlin_%28programming_language%29) | Designed by Andrey Breslav, JetBrains; First appeared 22 July 2011 ; 15 years ago ( 2011-07-22 ) |
 | swift | [English Wikipedia](https://en.wikipedia.org/wiki/Swift_%28programming_language%29) | Designed by Chris Lattner , Doug Gregor, John McCall, Ted Kremenek, Joe Groff, and Apple Inc.; First appeared June 2, 2014 ; 12 years ago ( 2014-06-02 ) |
-| scala | [English Wikipedia](https://en.wikipedia.org/wiki/Scala_%28programming_language%29) | Designed by Martin Odersky; First appeared 20 January 2004 ; 22 years ago ( 2004-01-20 ) |
 | lua | [English Wikipedia](https://en.wikipedia.org/wiki/Lua_%28programming_language%29) | Designed by Roberto Ierusalimschy Waldemar Celes Luiz Henrique de Figueiredo; First appeared 1993 ; 33 years ago ( 1993 ) |
 | bash | [English Wikipedia](https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29) |  |
+| batch | [English Wikipedia](https://en.wikipedia.org/wiki/Batch_file) | MS-DOS 1.0 lineage (1981); Microsoft; modern Windows cmd examples. |
 | powershell | [English Wikipedia](https://en.wikipedia.org/wiki/PowerShell) | Designed by Jeffrey Snover , Bruce Payette, James Truher (et al.); First appeared November 14, 2006 ; 19 years ago ( 2006-11-14 ) |
 | r | [English Wikipedia](https://en.wikipedia.org/wiki/R_%28programming_language%29) | Designed by Ross Ihaka and Robert Gentleman; First appeared August 1993 ; 33 years ago ( 1993-08 ) |
 | julia | [English Wikipedia](https://en.wikipedia.org/wiki/Julia_%28programming_language%29) | Designed by Jeff Bezanson , Alan Edelman , Stefan Karpinski , Viral B. Shah; First appeared 2012 ; 14 years ago ( 2012 ) |
@@ -54,3 +54,5 @@ by lisp-lang.org; that source does not specify an asset license.
 - SQL: Devicon has vendor/product logos, not a general SQL logo.
 - Scheme: no Devicon entry or SVG logo on [scheme.org](https://www.scheme.org/).
 - Brainfuck: no Devicon entry or SVG logo on [brainfuck.org](https://www.brainfuck.org/).
+
+Batch uses 1981 for MS-DOS 1.0 / PC DOS 1.0, whose COMMAND.COM supported batch files. This is a lineage date, not modern cmd syntax. See [MS-DOS](https://en.wikipedia.org/wiki/MS-DOS), [Batch file](https://en.wikipedia.org/wiki/Batch_file), and [PC DOS 1.0 evidence](https://www.os2museum.com/wp/pc-dos-1-0-but-not-quite/). The logo is self-made, CC0, and depicts a generic terminal with no third-party trademark.

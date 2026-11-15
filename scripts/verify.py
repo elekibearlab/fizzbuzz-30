@@ -15,10 +15,10 @@ build = root / '.build'
 build.mkdir(exist_ok=True)
 extensions = dict(zip(
     'c cpp csharp java python javascript go rust php ruby '
-    'kotlin swift scala lua bash powershell r julia fortran '
+    'kotlin swift lua bash batch powershell r julia fortran '
     'gdscript cobol sql asm commonlisp scheme haskell '
     'elixir erlang prolog brainfuck'.split(),
-    'c cpp cs java py js go rs php rb kt swift scala lua sh '
+    'c cpp cs java py js go rs php rb kt swift lua sh bat '
     'ps1 R jl f90 gd cob sql asm lisp scm hs exs erl pl bf'.split()
 ))
 versions = {
@@ -34,7 +34,6 @@ versions = {
     'ruby': 'ruby --version',
     'kotlin': 'kotlinc -version',
     'swift': 'swiftc --version',
-    'scala': 'scalac -version',
     'lua': 'lua5.4 -v',
     'bash': 'bash --version',
     'powershell': 'pwsh --version',
@@ -86,10 +85,6 @@ def commands(slug, version, source, target):
             'swiftc', '-module-cache-path',
             str(build / 'swift-cache'), source, '-o', binary
         ]], [binary]
-    if slug == 'scala':
-        return [['scalac', '-d', folder, source]], [
-            'scala', '-cp', folder, 'Main'
-        ]
     if slug == 'cobol':
         return [['cobc', '-x', '-free', source, '-o', binary]], [binary]
     if slug == 'asm':
@@ -183,6 +178,12 @@ for slug, ext in extensions.items():
         detail = ''
         status = 'NG'
         try:
+            if slug == 'batch':
+                status = 'SKIP'
+                detail = 'Verify on Windows with cmd /c (normalize CRLF/LF)'
+                results.append((slug, version, status, detail))
+                print(f'{slug}/{version}: {status} {detail}', flush=True)
+                continue
             if slug in missing:
                 raise RuntimeError('Runtime unavailable')
             if slug not in ('brainfuck', 'cobol', 'asm'):
@@ -225,7 +226,7 @@ report = [
     '# Execution results', '',
     f'UTC: {datetime.datetime.now(datetime.timezone.utc).isoformat()}',
     f'Platform: {platform.platform()}', '',
-    f'OK: {ok} / NG: {60 - ok}', '',
+    f'OK: {ok} / NG: {sum(r[2] == "NG" for r in results)} / SKIP: 2', '',
     '| slug | version | result | detail |',
     '| --- | --- | --- | --- |',
 ]
@@ -238,7 +239,8 @@ report += [
     '', '## Unavailable runtimes', '',
     ', '.join(missing) if missing else 'None.', '',
     '## Verification', '',
-    'Each source is built independently and executed with a 180-second',
+    'Batch is skipped; verify on Windows with cmd /c, normalizing CRLF/LF.',
+    'Each other source is built independently and executed with a 180-second',
     'timeout. Its output is compared byte-for-byte using diff -u.',
     'Build commands, stdout, stderr and diffs remain in .build/.',
     'Only the Godot startup banner is removed before comparison.',
@@ -250,4 +252,4 @@ report += [
 (root / 'docs' / 'results.md').write_text(
     '\n'.join(report), encoding='utf-8', newline='\n'
 )
-sys.exit(0 if ok == 60 else 1)
+sys.exit(0 if ok == 58 else 1)

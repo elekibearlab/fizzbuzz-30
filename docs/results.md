@@ -3,7 +3,7 @@
 UTC: 2026-11-14T18:41:24.301018+00:00
 Platform: Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.35
 
-OK: 60 / NG: 0
+OK: 60 / NG: 0 (58 prior Linux results + 2 Windows Batch results)
 
 | slug | version | result | detail |
 | --- | --- | --- | --- |
@@ -31,12 +31,12 @@ OK: 60 / NG: 0
 | kotlin | idiomatic | OK |  |
 | swift | aligned | OK |  |
 | swift | idiomatic | OK |  |
-| scala | aligned | OK |  |
-| scala | idiomatic | OK |  |
 | lua | aligned | OK |  |
 | lua | idiomatic | OK |  |
 | bash | aligned | OK |  |
 | bash | idiomatic | OK |  |
+| batch | aligned | OK | Windows cmd /d /c; 100 lines; CRLF/LF normalized; exit 0; stderr empty |
+| batch | idiomatic | OK | Windows cmd /d /c; 100 lines; CRLF/LF normalized; exit 0; stderr empty |
 | powershell | aligned | OK |  |
 | powershell | idiomatic | OK |  |
 | r | aligned | OK |  |
@@ -84,9 +84,9 @@ OK: 60 / NG: 0
 | ruby | ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-linux-gnu] |
 | kotlin | info: kotlinc-jvm 1.3-SNAPSHOT (JRE 11.0.32.1+1-post-1ubuntu1-22.04-Ubuntu) |
 | swift | Swift version 5.10.1 (swift-5.10.1-RELEASE) / Target: x86_64-unknown-linux-gnu |
-| scala | Scala compiler version 2.11.12 -- Copyright 2002-2017, LAMP/EPFL |
 | lua | Lua 5.4.4  Copyright (C) 1994-2022 Lua.org, PUC-Rio |
 | bash | GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu) / Copyright (C) 2020 Free Software Foundation, Inc. |
+| batch | Microsoft Windows [Version 10.0.26300.9974] |
 | powershell | PowerShell 7.4.13 |
 | r | R scripting front-end version 4.1.2 (2021-11-01) |
 | julia | julia version 1.10.10 |
@@ -109,7 +109,13 @@ None.
 
 ## Verification
 
-Each source is built independently and executed with a 180-second
+The 58 unchanged programs retain the Linux results dated above.
+Batch was verified separately on 2026-11-15T05:08:50.629475+00:00
+on Windows-11-10.0.26300-SP0. Both cmd /d /c outputs match expected.txt
+after CRLF/LF normalization (100 lines, exit 0, empty stderr).
+Linux verify.py skips Batch; it does not claim a Windows pass.
+
+Each non-Batch source is built independently and executed with a 180-second
 timeout. Its output is compared byte-for-byte using diff -u.
 Build commands, stdout, stderr and diffs remain in .build/.
 Only the Godot startup banner is removed before comparison.

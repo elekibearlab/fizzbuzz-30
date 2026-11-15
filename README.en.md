@@ -40,7 +40,7 @@ For languages that cannot follow the aligned shape directly:
 
 ## Languages
 
-The year is the "first appeared" year on English Wikipedia. Line counts exclude blank lines.
+The year is the "first appeared" year on English Wikipedia (Batch uses the MS-DOS 1.0 lineage year, 1981). Line counts exclude blank lines.
 
 | Language | Year | aligned | idiomatic |
 |---|---|---|---|
@@ -55,6 +55,8 @@ The year is the "first appeared" year on English Wikipedia. Line counts exclude 
 | C++ | 1985 | [13 lines](languages/cpp/aligned.cpp) | [16 lines](languages/cpp/idiomatic.cpp) |
 | Erlang | 1986 | [13 lines](languages/erlang/aligned.erl) | [13 lines](languages/erlang/idiomatic.erl) |
 | Bash | 1989 | [15 lines](languages/bash/aligned.sh) | [9 lines](languages/bash/idiomatic.sh) |
+| Batch | 1981 | [18 lines](languages/batch/aligned.bat) | [14 lines](languages/batch/idiomatic.bat) |
+| PowerShell | 2006 | [14 lines](languages/powershell/aligned.ps1) | [8 lines](languages/powershell/idiomatic.ps1) |
 | Haskell | 1990 | [9 lines](languages/haskell/aligned.hs) | [8 lines](languages/haskell/idiomatic.hs) |
 | Python | 1991 | [14 lines](languages/python/aligned.py) | [7 lines](languages/python/idiomatic.py) |
 | Brainfuck | 1993 | [36 lines](languages/brainfuck/aligned.bf) | [36 lines](languages/brainfuck/idiomatic.bf) |
@@ -65,8 +67,6 @@ The year is the "first appeared" year on English Wikipedia. Line counts exclude 
 | PHP | 1995 | [13 lines](languages/php/aligned.php) | [11 lines](languages/php/idiomatic.php) |
 | Ruby | 1995 | [17 lines](languages/ruby/aligned.rb) | [8 lines](languages/ruby/idiomatic.rb) |
 | C# | 2000 | [14 lines](languages/csharp/aligned.cs) | [16 lines](languages/csharp/idiomatic.cs) |
-| Scala | 2004 | [13 lines](languages/scala/aligned.scala) | [9 lines](languages/scala/idiomatic.scala) |
-| PowerShell | 2006 | [14 lines](languages/powershell/aligned.ps1) | [8 lines](languages/powershell/idiomatic.ps1) |
 | Go | 2009 | [21 lines](languages/go/aligned.go) | [22 lines](languages/go/idiomatic.go) |
 | Kotlin | 2011 | [11 lines](languages/kotlin/aligned.kt) | [9 lines](languages/kotlin/idiomatic.kt) |
 | Elixir | 2012 | [21 lines](languages/elixir/aligned.exs) | [13 lines](languages/elixir/idiomatic.exs) |
@@ -94,13 +94,20 @@ On WSL Ubuntu 22.04 (x86-64), run these from the repository folder.
 ```sh
 sudo bash scripts/setup.sh         # install the toolchains with apt
 python3 scripts/setup_portable.py  # unpack Swift, Julia, PowerShell and Godot into .runtimes/
-bash scripts/run_all.sh            # build and run all 60, and compare with the expected output
+bash scripts/run_all.sh            # build and run 58 (Batch is skipped), and compare with the expected output
 ```
 
 - Results are written to [`docs/results.md`](docs/results.md)
 - If any output differs or any program fails, the exit code is 1
 - Build commands, output and diffs are kept in `.build/<language>/<version>/`
 - What the scripts check is listed in [`docs/checks.md`](docs/checks.md) (Japanese)
+
+Batch uses 1981 for the MS-DOS 1.0 lineage. It uses Windows cmd subroutines and standard output. Linux verifies 58 programs and skips Batch. Run these on Windows and compare with data/expected.txt after normalizing CRLF/LF.
+
+```bat
+cmd /c languages\batch\aligned.bat
+cmd /c languages\batch\idiomatic.bat
+```
 
 ## Rebuild the compare page
 
@@ -116,7 +123,8 @@ Change the look in [`scripts/compare.template.html`](scripts/compare.template.ht
 
 - **Code**: [MIT License](LICENSE)
 - **Logos**: each follows the license of its source
-  - 26 languages use SVGs from [Devicon](https://devicon.dev/) (MIT, see [`data/logos/DEVICON-LICENSE.txt`](data/logos/DEVICON-LICENSE.txt))
+  - 25 languages use SVGs from [Devicon](https://devicon.dev/) (MIT, see [`data/logos/DEVICON-LICENSE.txt`](data/logos/DEVICON-LICENSE.txt))
+  - Batch uses a self-made SVG (CC0)
   - Common Lisp uses an SVG from lisp-lang.org (the source does not state a license)
   - SQL, Scheme and Brainfuck have no logo
   - The source URL of each logo is in the `logo_source_url` column of [`data/languages.csv`](data/languages.csv)

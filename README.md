@@ -38,7 +38,7 @@ aligned の形にそのまま書けない言語は、次のようにしていま
 
 ## 収録言語
 
-公開年は英語版 Wikipedia の first appearance です。行数は空行を除いた数です。
+公開年は英語版 Wikipedia の first appearance です（Batch は MS-DOS 1.0 系の1981年）。行数は空行を除いた数です。
 
 | 言語 | 公開年 | aligned | idiomatic |
 |---|---|---|---|
@@ -53,6 +53,8 @@ aligned の形にそのまま書けない言語は、次のようにしていま
 | C++ | 1985 | [13 行](languages/cpp/aligned.cpp) | [16 行](languages/cpp/idiomatic.cpp) |
 | Erlang | 1986 | [13 行](languages/erlang/aligned.erl) | [13 行](languages/erlang/idiomatic.erl) |
 | Bash | 1989 | [15 行](languages/bash/aligned.sh) | [9 行](languages/bash/idiomatic.sh) |
+| Batch | 1981 | [18 行](languages/batch/aligned.bat) | [14 行](languages/batch/idiomatic.bat) |
+| PowerShell | 2006 | [14 行](languages/powershell/aligned.ps1) | [8 行](languages/powershell/idiomatic.ps1) |
 | Haskell | 1990 | [9 行](languages/haskell/aligned.hs) | [8 行](languages/haskell/idiomatic.hs) |
 | Python | 1991 | [14 行](languages/python/aligned.py) | [7 行](languages/python/idiomatic.py) |
 | Brainfuck | 1993 | [36 行](languages/brainfuck/aligned.bf) | [36 行](languages/brainfuck/idiomatic.bf) |
@@ -63,8 +65,6 @@ aligned の形にそのまま書けない言語は、次のようにしていま
 | PHP | 1995 | [13 行](languages/php/aligned.php) | [11 行](languages/php/idiomatic.php) |
 | Ruby | 1995 | [17 行](languages/ruby/aligned.rb) | [8 行](languages/ruby/idiomatic.rb) |
 | C# | 2000 | [14 行](languages/csharp/aligned.cs) | [16 行](languages/csharp/idiomatic.cs) |
-| Scala | 2004 | [13 行](languages/scala/aligned.scala) | [9 行](languages/scala/idiomatic.scala) |
-| PowerShell | 2006 | [14 行](languages/powershell/aligned.ps1) | [8 行](languages/powershell/idiomatic.ps1) |
 | Go | 2009 | [21 行](languages/go/aligned.go) | [22 行](languages/go/idiomatic.go) |
 | Kotlin | 2011 | [11 行](languages/kotlin/aligned.kt) | [9 行](languages/kotlin/idiomatic.kt) |
 | Elixir | 2012 | [21 行](languages/elixir/aligned.exs) | [13 行](languages/elixir/idiomatic.exs) |
@@ -92,13 +92,20 @@ WSL の Ubuntu 22.04（x86-64）で、リポジトリのフォルダから次の
 ```sh
 sudo bash scripts/setup.sh         # apt で処理系を入れる
 python3 scripts/setup_portable.py  # Swift・Julia・PowerShell・Godot を .runtimes/ に展開する
-bash scripts/run_all.sh            # 60 本をビルド・実行して、正しい出力と比べる
+bash scripts/run_all.sh            # 58 本をビルド・実行して、正しい出力と比べる
 ```
 
 - 結果は [`docs/results.md`](docs/results.md) に書き出されます
 - 1 本でも出力が違うか失敗すると、終了コードが 1 になります
 - ビルドのコマンド・出力・差分は `.build/<言語>/<版>/` に残ります
 - 何を検査しているかは [`docs/checks.md`](docs/checks.md) にまとめています
+
+Batch は MS-DOS 1.0 系の1981年を採用。Windows cmd のサブルーチンと標準出力を使います。Linux の検証は58本で Batch 2本は SKIP。Windows では次を実行し、CRLF/LF をそろえて data/expected.txt と比較します。
+
+```bat
+cmd /c languages\batch\aligned.bat
+cmd /c languages\batch\idiomatic.bat
+```
 
 ## 比較ページを作り直す
 
@@ -114,7 +121,8 @@ python3 scripts/build_compare.py
 
 - **コード**: [MIT License](LICENSE)
 - **ロゴ**: それぞれの配布元のライセンスに従います
-  - 26 言語は [Devicon](https://devicon.dev/) の SVG です（MIT。[`data/logos/DEVICON-LICENSE.txt`](data/logos/DEVICON-LICENSE.txt)）
+  - 25 言語は [Devicon](https://devicon.dev/) の SVG です（MIT。[`data/logos/DEVICON-LICENSE.txt`](data/logos/DEVICON-LICENSE.txt)）
+  - Batch は自作の SVG です（self-made, CC0）
   - Common Lisp は lisp-lang.org の SVG です（配布元にライセンスの記載はありません）
   - SQL・Scheme・Brainfuck はロゴがありません
   - 各ロゴの出典 URL は [`data/languages.csv`](data/languages.csv) の `logo_source_url` 列にあります

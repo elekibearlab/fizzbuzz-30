@@ -11,9 +11,9 @@ php,PHP,1995,Rasmus Lerdorf,data/logos/php.svg,https://raw.githubusercontent.com
 ruby,Ruby,1995,Yukihiro Matsumoto,data/logos/ruby.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/ruby/ruby-original.svg,MIT
 kotlin,Kotlin,2011,Andrey Breslav; JetBrains,data/logos/kotlin.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/kotlin/kotlin-original.svg,MIT
 swift,Swift,2014,Chris Lattner; Doug Gregor; John McCall; Ted Kremenek; Joe Groff; Apple,data/logos/swift.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/swift/swift-original.svg,MIT
-scala,Scala,2004,Martin Odersky,data/logos/scala.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/scala/scala-original.svg,MIT
 lua,Lua,1993,Roberto Ierusalimschy; Waldemar Celes; Luiz Henrique de Figueiredo,data/logos/lua.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/lua/lua-original.svg,MIT
 bash,Bash,1989,Brian Fox,data/logos/bash.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/bash/bash-original.svg,MIT
+batch,Batch,1981,Microsoft,data/logos/batch.svg,"self-made, CC0",CC0
 powershell,PowerShell,2006,Jeffrey Snover; Bruce Payette; James Truher,data/logos/powershell.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/powershell/powershell-original.svg,MIT
 r,R,1993,Ross Ihaka; Robert Gentleman,data/logos/r.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/r/r-original.svg,MIT
 julia,Julia,2012,Jeff Bezanson; Stefan Karpinski; Viral B. Shah; Alan Edelman,data/logos/julia.svg,https://raw.githubusercontent.com/devicons/devicon/32fe1d3b3f36ad11f90ab94f7db59738139c2bf6/icons/julia/julia-original.svg,MIT

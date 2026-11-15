@@ -15,7 +15,7 @@ VERSIONS = ("aligned", "idiomatic")
 HLJS = {
     "c": "c", "cpp": "cpp", "csharp": "csharp", "java": "java", "python": "python",
     "javascript": "javascript", "go": "go", "rust": "rust", "php": "php", "ruby": "ruby",
-    "kotlin": "kotlin", "swift": "swift", "scala": "scala", "lua": "lua", "bash": "bash",
+    "kotlin": "kotlin", "swift": "swift", "lua": "lua", "bash": "bash", "batch": "dos",
     "powershell": "powershell", "r": "r", "julia": "julia", "fortran": "fortran",
     "gdscript": None, "cobol": None, "sql": "sql", "asm": "x86asm", "commonlisp": "lisp",
     "scheme": "scheme", "haskell": "haskell", "elixir": "elixir", "erlang": "erlang",

@@ -33,7 +33,10 @@ for row in languages:
     if row['logo_file']:
         image = ET.parse(root / row['logo_file']).getroot()
         assert image.tag == '{http://www.w3.org/2000/svg}svg'
-        assert row['logo_source_url'].startswith('https://')
+        assert (row['logo_source_url'].startswith('https://')
+                or (slug == 'batch'
+                    and row['logo_source_url'] == 'self-made, CC0'
+                    and row['license'] == 'CC0'))
         assert row['license']
 
 with (root / 'data' / 'stats.csv').open(encoding='utf-8') as f:

@@ -23,12 +23,12 @@ kotlin,aligned,11,175
 kotlin,idiomatic,9,143
 swift,aligned,14,163
 swift,idiomatic,9,182
-scala,aligned,13,186
-scala,idiomatic,9,175
 lua,aligned,14,169
 lua,idiomatic,17,230
 bash,aligned,15,191
 bash,idiomatic,9,122
+batch,aligned,18,248
+batch,idiomatic,14,268
 powershell,aligned,14,183
 powershell,idiomatic,8,146
 r,aligned,14,157
