@@ -115,6 +115,7 @@ cmd /c languages\batch\idiomatic.bat
 
 ```sh
 python3 scripts/build_compare.py
+python3 scripts/build_compare.py --out dist/index.html   # 別のサイトに置くとき（1 ファイルで動く）
 ```
 
 見た目は [`scripts/compare.template.html`](scripts/compare.template.html) で変えられます。

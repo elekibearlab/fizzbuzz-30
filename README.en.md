@@ -116,6 +116,7 @@ After changing the code or `data/languages.csv`, rebuild `compare.html` with:
 
 ```sh
 python3 scripts/build_compare.py
+python3 scripts/build_compare.py --out dist/index.html   # to host it on another site (works as a single file)
 ```
 
 Change the look in [`scripts/compare.template.html`](scripts/compare.template.html).

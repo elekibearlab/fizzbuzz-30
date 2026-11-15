@@ -3,6 +3,7 @@
 import base64
 import csv
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -37,7 +38,12 @@ def find_source(slug, version):
 
 
 def main():
-    stats = {(r["slug"], r["version"]): r for r in read_csv("stats.csv")}
+    # --out <path>: write the page somewhere else (e.g. dist/index.html when another site hosts it)
+    out = OUT
+    if "--out" in sys.argv:
+        out = Path(sys.argv[sys.argv.index("--out") + 1]).resolve()
+        out.parent.mkdir(parents=True, exist_ok=True)
+    stats ={(r["slug"], r["version"]): r for r in read_csv("stats.csv")}
     languages = []
     for row in read_csv("languages.csv"):
         slug = row["slug"]
@@ -67,9 +73,9 @@ def main():
 
     data = json.dumps(languages, ensure_ascii=False).replace("</", "<\\/")
     html = TEMPLATE.read_text(encoding="utf-8").replace("/*__DATA__*/[]", data)
-    with open(OUT, "w", encoding="utf-8", newline="\n") as f:
+    with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
-    print(f"wrote {OUT.name} ({len(languages)} languages)")
+    print(f"wrote {out.name} ({len(languages)} languages)")
 
 
 if __name__ == "__main__":
