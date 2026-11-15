@@ -14,6 +14,7 @@ Open [`compare.html`](compare.html) in a browser to put the code of the language
 
 - The aligned and idiomatic boxes each list the languages. Pick the same language in both boxes to put its two versions side by side. Each column’s × removes only that column
 - Each box and the toolbar have “Select all” and “Clear all”
+- Type in the search box to filter the languages in both boxes by name (while filtering, a box’s “Select all” picks only the visible languages)
 - The default shows both versions of C, Python and COBOL. Sort by year, name or each version's line count
 - Columns fit their longest code line and wrap onto new rows. Only columns wider than the screen scroll internally
 - Share selections by URL (e.g. `compare.html#s=year&p=c:aligned,c:idiomatic,python:aligned`). Old links such as `#v=aligned&l=c,python,cobol` still work

@@ -53,6 +53,11 @@ h1 { margin: 0 0 8px; font-size: 18px; }
 .seg button[aria-pressed="true"] { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
 .btn { border: 1px solid var(--border); background: transparent; color: var(--text); border-radius: 6px; padding: 4px 12px; font: inherit; cursor: pointer; }
 .count { color: var(--muted); }
+.search {
+  border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px;
+  background: var(--panel); color: var(--text); font: inherit; width: 14em; max-width: 100%;
+}
+.search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 /* 版ごとに枠を分け、その中に言語のボタンを並べる（同じ言語の 2 版を並べたいときは両方の枠で押す） */
 .picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-height: 40vh; overflow-y: auto; }
 .panel { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px 10px; min-width: 0; }
@@ -119,6 +124,7 @@ main { padding: 16px; }
     </div>
     <button class="btn" id="all" data-i18n="selectAll"></button>
     <button class="btn" id="clear" data-i18n="clearAll"></button>
+    <input class="search" id="search" type="search" data-i18n-placeholder="search" data-i18n-aria="search" autocomplete="off">
     <span class="count" id="count"></span>
   </div>
   <div class="picker" id="picker"></div>
@@ -158,6 +164,8 @@ main { padding: 16px; }
       "sortName": "名前順",
       "sortLines": "行数順",
       "clearAll": "全解除",
+      "search": "言語を検索",
+      "noMatch": "当てはまる言語がありません",
       "empty": "上の枠から言語を選ぶと、ここに並びます。",
       "selectPanel": "全選択",
       "clearPanel": "全解除",
@@ -185,6 +193,8 @@ main { padding: 16px; }
       "clearPanel": "Clear all",
       "selectAll": "Select all",
       "clearAll": "Clear all",
+      "search": "Search languages",
+      "noMatch": "No matching languages",
       "empty": "Pick languages in the boxes above to compare them here.",
       lines: (n) => `${n} lines`,
       metadata: (year, designer) => `${year} · ${designer}`,
@@ -203,13 +213,24 @@ main { padding: 16px; }
     el.textContent = t[el.dataset.i18n];
   for (const el of document.querySelectorAll("[data-i18n-aria]"))
     el.setAttribute("aria-label", t[el.dataset.i18nAria]);
+  for (const el of document.querySelectorAll("[data-i18n-placeholder]"))
+    el.setAttribute("placeholder", t[el.dataset.i18nPlaceholder]);
 
   const LANGS = JSON.parse(document.getElementById("data").textContent);
   const bySlug = new Map(LANGS.map((l) => [l.slug, l]));
   const DEFAULT = ["c", "python", "cobol"];
   const VERSIONS = ["aligned", "idiomatic"];
   const key = (slug, version) => `${slug}:${version}`;
-  const state = { sort: "year", selected: [] };
+  // query は URL に残さない（共有したいのは選んだ列で、絞り込みは一時的な操作のため）
+  const state = { sort: "year", selected: [], query: "" };
+
+  // 2 つの枠に共通の絞り込み。名前のほか slug（"cpp"・"csharp" など）でも当たる
+  function visibleLangs() {
+    const query = state.query.trim().toLowerCase();
+    if (query === "") return sorted();
+    return sorted().filter((lang) =>
+      lang.name.toLowerCase().includes(query) || lang.slug.includes(query));
+  }
 
   function readHash() {
     const p = new URLSearchParams(location.hash.slice(1));
@@ -274,7 +295,8 @@ main { padding: 16px; }
       selectButton.className = "btn";
       selectButton.textContent = t.selectPanel;
       selectButton.addEventListener("click", () => {
-        state.selected = [...new Set([...state.selected, ...LANGS.map((lang) => key(lang.slug, version))])];
+        // 絞り込み中は、見えている言語だけを選ぶ
+        state.selected = [...new Set([...state.selected, ...visibleLangs().map((lang) => key(lang.slug, version))])];
         update();
       });
       const clearButton = document.createElement("button");
@@ -289,7 +311,14 @@ main { padding: 16px; }
 
       const chips = document.createElement("div");
       chips.className = "chips";
-      for (const lang of sorted()) {
+      const langs = visibleLangs();
+      if (langs.length === 0) {
+        const none = document.createElement("span");
+        none.className = "panel-note";
+        none.textContent = t.noMatch;
+        chips.append(none);
+      }
+      for (const lang of langs) {
         const pair = key(lang.slug, version);
         const button = document.createElement("button");
         button.className = "chip";
@@ -401,6 +430,11 @@ main { padding: 16px; }
   document.getElementById("clear").addEventListener("click", () => {
     state.selected = [];
     update();
+  });
+  // 入力欄は描き直さない（打っている途中でフォーカスが外れないよう、枠だけ描き直す）
+  document.getElementById("search").addEventListener("input", (event) => {
+    state.query = event.target.value;
+    renderPicker();
   });
   window.addEventListener("hashchange", () => { readHash(); update(); });
 
