@@ -12,15 +12,15 @@ All 60 programs were actually run, and every one prints the same 100 lines.
 
 Open [`compare.html`](compare.html) in a browser to put the code of the languages you pick side by side.
 
-- Pick languages from the list at the top to add columns
-- Switch between `aligned` and `idiomatic`
-- Sort by year, name or line count
-- Your selection goes into the part of the URL after `#`, so you can share it as is (e.g. `compare.html#v=aligned&l=c,python,cobol`)
+- Toggle aligned and idiomatic separately for each language to compare both side by side. Each column's × removes only that pair
+- “Select all aligned” and “Select all idiomatic” add that version. “Select all (both)” and “Clear all” act on all pairs
+- The default shows both versions of C, Python and COBOL. Sort by year, name or each version's line count
+- Columns fit their longest code line and wrap onto new rows. Only columns wider than the screen scroll internally
+- Share selections by URL (e.g. `compare.html#s=year&p=c:aligned,c:idiomatic,python:aligned`). Old links such as `#v=aligned&l=c,python,cobol` still work
 - Use `?lang=ja` or `?lang=en` to set the display language. Otherwise, Japanese browsers use Japanese and all others use English. This works with the selection in `#`.
 
 No server is needed. Just double-click the file.
 
-The page labels are in Japanese.
 
 ## Two versions
 
