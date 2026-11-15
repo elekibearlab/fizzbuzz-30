@@ -12,8 +12,8 @@ All 60 programs were actually run, and every one prints the same 100 lines.
 
 Open [`compare.html`](compare.html) in a browser to put the code of the languages you pick side by side.
 
-- Toggle aligned and idiomatic separately for each language to compare both side by side. Each column's × removes only that pair
-- “Select all aligned” and “Select all idiomatic” add that version. “Select all (both)” and “Clear all” act on all pairs
+- The aligned and idiomatic boxes each list the languages. Pick the same language in both boxes to put its two versions side by side. Each column’s × removes only that column
+- Each box has “Select all” and “Clear”, and the toolbar has “Select all (both)” and “Clear all”
 - The default shows both versions of C, Python and COBOL. Sort by year, name or each version's line count
 - Columns fit their longest code line and wrap onto new rows. Only columns wider than the screen scroll internally
 - Share selections by URL (e.g. `compare.html#s=year&p=c:aligned,c:idiomatic,python:aligned`). Old links such as `#v=aligned&l=c,python,cobol` still work
