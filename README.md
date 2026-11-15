@@ -34,7 +34,7 @@ aligned の形にそのまま書けない言語は、次のようにしていま
 
 - **SQL**: 関数の代わりに SQLite の `CASE` 式を使う
 - **COBOL**: 文字列を設定する段落を、関数の代わりにする
-- **Bash**: 標準出力を、関数の返り値の代わりにする
+- **Bash・Batch**: 標準出力を、関数の返り値の代わりにする（Batch はサブルーチンを `call` で呼ぶ）
 - **Haskell・Prolog**: ループの代わりに `mapM_`・`forall/2` を使う
 - **Brainfuck**: 割り算がないので、3 と 5 のカウントダウンで判定する。2 つの版は同じコード
 
@@ -51,11 +51,11 @@ aligned の形にそのまま書けない言語は、次のようにしていま
 | Prolog | 1972 | [12 行](languages/prolog/aligned.pl) | [9 行](languages/prolog/idiomatic.pl) |
 | SQL | 1973 | [13 行](languages/sql/aligned.sql) | [14 行](languages/sql/idiomatic.sql) |
 | Scheme | 1975 | [13 行](languages/scheme/aligned.scm) | [11 行](languages/scheme/idiomatic.scm) |
+| Batch | 1981 | [18 行](languages/batch/aligned.bat) | [14 行](languages/batch/idiomatic.bat) |
 | Common Lisp | 1984 | [12 行](languages/commonlisp/aligned.lisp) | [11 行](languages/commonlisp/idiomatic.lisp) |
 | C++ | 1985 | [13 行](languages/cpp/aligned.cpp) | [16 行](languages/cpp/idiomatic.cpp) |
 | Erlang | 1986 | [13 行](languages/erlang/aligned.erl) | [13 行](languages/erlang/idiomatic.erl) |
 | Bash | 1989 | [15 行](languages/bash/aligned.sh) | [9 行](languages/bash/idiomatic.sh) |
-| Batch | 1981 | [18 行](languages/batch/aligned.bat) | [14 行](languages/batch/idiomatic.bat) |
 | PowerShell | 2006 | [14 行](languages/powershell/aligned.ps1) | [8 行](languages/powershell/idiomatic.ps1) |
 | Haskell | 1990 | [9 行](languages/haskell/aligned.hs) | [8 行](languages/haskell/idiomatic.hs) |
 | Python | 1991 | [14 行](languages/python/aligned.py) | [7 行](languages/python/idiomatic.py) |
@@ -102,7 +102,8 @@ bash scripts/run_all.sh            # 58 本をビルド・実行して、正し�
 - ビルドのコマンド・出力・差分は `.build/<言語>/<版>/` に残ります
 - 何を検査しているかは [`docs/checks.md`](docs/checks.md) にまとめています
 
-Batch は MS-DOS 1.0 系の1981年を採用。Windows cmd のサブルーチンと標準出力を使います。Linux の検証は58本で Batch 2本は SKIP。Windows では次を実行し、CRLF/LF をそろえて data/expected.txt と比較します。
+Batch（`languages/batch/`）は Windows のコマンドプロンプトでしか動かないので、Linux の検証では飛ばします（58 本を確かめます）。
+Windows で次を実行し、改行（CRLF/LF）をそろえてから `data/expected.txt` と比べてください。
 
 ```bat
 cmd /c languages\batch\aligned.bat

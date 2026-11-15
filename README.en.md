@@ -35,7 +35,7 @@ For languages that cannot follow the aligned shape directly:
 
 - **SQL**: SQLite's `CASE` expression stands in for the function
 - **COBOL**: a paragraph that sets a string stands in for the function
-- **Bash**: standard output stands in for the function's return value
+- **Bash, Batch**: standard output stands in for the function's return value (Batch calls a subroutine with `call`)
 - **Haskell, Prolog**: `mapM_` and `forall/2` stand in for the loop
 - **Brainfuck**: there is no division, so it counts down from 3 and 5. Both versions are the same code
 
@@ -52,11 +52,11 @@ The year is the "first appeared" year on English Wikipedia (Batch uses the MS-DO
 | Prolog | 1972 | [12 lines](languages/prolog/aligned.pl) | [9 lines](languages/prolog/idiomatic.pl) |
 | SQL | 1973 | [13 lines](languages/sql/aligned.sql) | [14 lines](languages/sql/idiomatic.sql) |
 | Scheme | 1975 | [13 lines](languages/scheme/aligned.scm) | [11 lines](languages/scheme/idiomatic.scm) |
+| Batch | 1981 | [18 lines](languages/batch/aligned.bat) | [14 lines](languages/batch/idiomatic.bat) |
 | Common Lisp | 1984 | [12 lines](languages/commonlisp/aligned.lisp) | [11 lines](languages/commonlisp/idiomatic.lisp) |
 | C++ | 1985 | [13 lines](languages/cpp/aligned.cpp) | [16 lines](languages/cpp/idiomatic.cpp) |
 | Erlang | 1986 | [13 lines](languages/erlang/aligned.erl) | [13 lines](languages/erlang/idiomatic.erl) |
 | Bash | 1989 | [15 lines](languages/bash/aligned.sh) | [9 lines](languages/bash/idiomatic.sh) |
-| Batch | 1981 | [18 lines](languages/batch/aligned.bat) | [14 lines](languages/batch/idiomatic.bat) |
 | PowerShell | 2006 | [14 lines](languages/powershell/aligned.ps1) | [8 lines](languages/powershell/idiomatic.ps1) |
 | Haskell | 1990 | [9 lines](languages/haskell/aligned.hs) | [8 lines](languages/haskell/idiomatic.hs) |
 | Python | 1991 | [14 lines](languages/python/aligned.py) | [7 lines](languages/python/idiomatic.py) |
@@ -103,7 +103,8 @@ bash scripts/run_all.sh            # build and run 58 (Batch is skipped), and co
 - Build commands, output and diffs are kept in `.build/<language>/<version>/`
 - What the scripts check is listed in [`docs/checks.md`](docs/checks.md) (Japanese)
 
-Batch uses 1981 for the MS-DOS 1.0 lineage. It uses Windows cmd subroutines and standard output. Linux verifies 58 programs and skips Batch. Run these on Windows and compare with data/expected.txt after normalizing CRLF/LF.
+Batch (`languages/batch/`) only runs in the Windows Command Prompt, so the Linux check skips it (58 programs are checked).
+On Windows, run the following and compare the output with `data/expected.txt` after normalizing line endings (CRLF/LF).
 
 ```bat
 cmd /c languages\batch\aligned.bat
