@@ -16,6 +16,7 @@ Open [`compare.html`](compare.html) in a browser to put the code of the language
 - Switch between `aligned` and `idiomatic`
 - Sort by year, name or line count
 - Your selection goes into the part of the URL after `#`, so you can share it as is (e.g. `compare.html#v=aligned&l=c,python,cobol`)
+- Use `?lang=ja` or `?lang=en` to set the display language. Otherwise, Japanese browsers use Japanese and all others use English. This works with the selection in `#`.
 
 No server is needed. Just double-click the file.
 

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FizzBuzz 30 Compare</title>
+<title data-i18n="title"></title>
 <link rel="stylesheet" media="(prefers-color-scheme: light)" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
 <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <style>
@@ -101,30 +101,31 @@ main { padding: 16px; }
 </head>
 <body>
 <header>
-  <h1>FizzBuzz in 30 languages</h1>
+  <h1 data-i18n="heading"></h1>
   <div class="toolbar">
-    <div class="seg" id="version" role="group" aria-label="版">
-      <button data-v="aligned">aligned<span class="note">（判定順をそろえた版）</span></button>
-      <button data-v="idiomatic">idiomatic<span class="note">（言語らしい書き方）</span></button>
+    <div class="seg" id="version" role="group" data-i18n-aria="version">
+      <button data-v="aligned"><span data-i18n="aligned"></span><span class="note" data-i18n="alignedNote"></span></button>
+      <button data-v="idiomatic"><span data-i18n="idiomatic"></span><span class="note" data-i18n="idiomaticNote"></span></button>
     </div>
-    <div class="seg" id="sort" role="group" aria-label="並び順">
-      <button data-s="year">公開年順</button>
-      <button data-s="name">名前順</button>
-      <button data-s="lines">行数順</button>
+    <div class="seg" id="sort" role="group" data-i18n-aria="sort">
+      <button data-s="year" data-i18n="sortYear"></button>
+      <button data-s="name" data-i18n="sortName"></button>
+      <button data-s="lines" data-i18n="sortLines"></button>
     </div>
-    <button class="btn" id="clear">全解除</button>
+    <button class="btn" id="all" data-i18n="selectAll"></button>
+    <button class="btn" id="clear" data-i18n="clearAll"></button>
     <span class="count" id="count"></span>
   </div>
   <div class="picker" id="picker"></div>
 </header>
 <main>
   <div class="columns" id="columns"></div>
-  <p class="empty" id="empty" hidden>上の一覧から言語を選ぶと、ここに並びます。</p>
+  <p class="empty" id="empty" data-i18n="empty" hidden></p>
 </main>
 
 <script id="data" type="application/json">/*__DATA__*/[]</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/scala.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/dos.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/julia.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/fortran.min.js"></script>
@@ -138,6 +139,62 @@ main { padding: 16px; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/brainfuck.min.js"></script>
 <script>
 (function () {
+  const messages = {
+    ja: {
+      "title": "FizzBuzz 30言語比較",
+      "heading": "30言語のFizzBuzz",
+      "version": "版",
+      "sort": "並び順",
+      "aligned": "aligned",
+      "alignedNote": "（判定順をそろえた版）",
+      "idiomatic": "idiomatic",
+      "idiomaticNote": "（言語らしい書き方）",
+      "sortYear": "公開年順",
+      "sortName": "名前順",
+      "sortLines": "行数順",
+      "clearAll": "全解除",
+      "empty": "上の一覧から言語を選ぶと、ここに並びます。",
+      "selectAll": "全選択",
+      lines: (n) => `${n} 行`,
+      metadata: (year, designer) => `${year} 年 · ${designer}`,
+      stats: (lines, chars) => `${lines} 行 · ${chars} 文字（空白除く）`,
+      remove: (name) => `${name} を外す`,
+      count: (selected, total) => `${selected} / ${total} 言語`,
+      close: "×"
+    },
+    en: {
+      "title": "FizzBuzz 30 Compare",
+      "heading": "FizzBuzz in 30 languages",
+      "version": "Version",
+      "sort": "Sort order",
+      "aligned": "aligned",
+      "alignedNote": " (same condition order)",
+      "idiomatic": "idiomatic",
+      "idiomaticNote": " (natural style for each language)",
+      "sortYear": "By release year",
+      "sortName": "By name",
+      "sortLines": "By line count",
+      "selectAll": "Select all",
+      "clearAll": "Clear all",
+      "empty": "Select languages from the list above to compare them here.",
+      lines: (n) => `${n} lines`,
+      metadata: (year, designer) => `${year} · ${designer}`,
+      stats: (lines, chars) => `${lines} lines · ${chars} characters (excluding whitespace)`,
+      remove: (name) => `Remove ${name}`,
+      count: (selected, total) => `${selected} / ${total} languages`,
+      close: "×"
+    }
+  };
+  const requestedLang = new URLSearchParams(location.search).get("lang");
+  const locale = ["ja", "en"].includes(requestedLang)
+    ? requestedLang : (navigator.language.toLowerCase().startsWith("ja") ? "ja" : "en");
+  const t = messages[locale];
+  document.documentElement.lang = locale;
+  for (const el of document.querySelectorAll("[data-i18n]"))
+    el.textContent = t[el.dataset.i18n];
+  for (const el of document.querySelectorAll("[data-i18n-aria]"))
+    el.setAttribute("aria-label", t[el.dataset.i18nAria]);
+
   const LANGS = JSON.parse(document.getElementById("data").textContent);
   const bySlug = new Map(LANGS.map((l) => [l.slug, l]));
   const DEFAULT = ["c", "python", "cobol"];
@@ -200,7 +257,7 @@ main { padding: 16px; }
       const year = document.createElement("span");
       year.className = "year";
       year.textContent = state.sort === "lines"
-        ? (lang.sources[state.version].lines ?? "-") + " 行"
+        ? t.lines(lang.sources[state.version].lines ?? "-")
         : String(lang.year);
       label.append(input, logoEl(lang), name, year);
       picker.append(label);
@@ -225,15 +282,15 @@ main { padding: 16px; }
       title.textContent = lang.name;
       const meta1 = document.createElement("div");
       meta1.className = "col-meta";
-      meta1.textContent = lang.year + " 年 · " + lang.designer;
+      meta1.textContent = t.metadata(lang.year, lang.designer);
       const meta2 = document.createElement("div");
       meta2.className = "col-meta";
-      meta2.textContent = (src.lines ?? "-") + " 行 · " + (src.chars ?? "-") + " 文字（空白除く）";
+      meta2.textContent = t.stats(src.lines ?? "-", src.chars ?? "-");
       info.append(title, meta1, meta2);
       const close = document.createElement("button");
       close.className = "col-close";
-      close.textContent = "×";
-      close.setAttribute("aria-label", lang.name + " を外す");
+      close.textContent = t.close;
+      close.setAttribute("aria-label", t.remove(lang.name));
       close.addEventListener("click", () => {
         state.selected = state.selected.filter((s) => s !== slug);
         update();
@@ -265,7 +322,7 @@ main { padding: 16px; }
       cols.append(col);
     }
     document.getElementById("empty").hidden = order.length > 0;
-    document.getElementById("count").textContent = order.length + " / " + LANGS.length + " 言語";
+    document.getElementById("count").textContent = t.count(order.length, LANGS.length);
   }
 
   function renderToolbar() {
@@ -289,6 +346,10 @@ main { padding: 16px; }
   document.getElementById("sort").addEventListener("click", (e) => {
     const s = e.target.closest("button")?.dataset.s;
     if (s) { state.sort = s; update(); }
+  });
+  document.getElementById("all").addEventListener("click", () => {
+    state.selected = sorted().map((lang) => lang.slug);
+    update();
   });
   document.getElementById("clear").addEventListener("click", () => {
     state.selected = [];

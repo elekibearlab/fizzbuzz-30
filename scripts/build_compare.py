@@ -12,6 +12,7 @@ TEMPLATE = HERE / "compare.template.html"
 VERSIONS = ("aligned", "idiomatic")
 
 # highlight.js language name per slug (None = plain text)
+# Batch uses dos; compare.template.html loads its extra language module.
 HLJS = {
     "c": "c", "cpp": "cpp", "csharp": "csharp", "java": "java", "python": "python",
     "javascript": "javascript", "go": "go", "rust": "rust", "php": "php", "ruby": "ruby",
